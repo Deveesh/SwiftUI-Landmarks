@@ -21,7 +21,7 @@ struct Landmark: Hashable, Codable, Identifiable {
     }
     
     private var coordinates: Coordinates
-    
+    var isFavorite: Bool
     
     struct Coordinates: Hashable, Codable {
         var latitude: Double
