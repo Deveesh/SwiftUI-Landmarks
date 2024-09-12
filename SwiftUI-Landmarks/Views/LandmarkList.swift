@@ -18,18 +18,33 @@ struct LandmarkList: View {
     
     var body: some View {
         NavigationSplitView {
-            List(filteredLandmarks) { landmark in
-                NavigationLink {
-                    LandmarkDetail(landmark: landmark)
-                } label: {
-                    LandmarkRow(landmark: landmark)
+            List {
+                Toggle(isOn: $showFavoritesOnly, label: {
+                    Text("Label")
+                })
+                
+                ForEach(filteredLandmarks) { landmark in
+                    NavigationLink {
+                        LandmarkDetail(landmark: landmark)
+                    } label: {
+                        LandmarkRow(landmark: landmark)
+                    }
                 }
 
-            }.navigationTitle("Landmarks")
+            }
+            .animation(.default, value: filteredLandmarks)
+            .navigationTitle("Landmarks")
         } detail: {
             Text("placeholder")
         }
 
+    }
+}
+
+struct EquvalntView: View {
+    var body: some View {
+        Text("1")
+        Circle()
     }
 }
 
